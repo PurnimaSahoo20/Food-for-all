@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food For All</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+        }
+
+        .split-container {
+            display: flex;
+            width: 100%;
+        }
+
+        .left-side {
+            flex: 1;
+            background-color: #4CD6B4;
+
+            padding: 3rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            color: white;
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            margin-left:11rem
+
+        }
+
+<!--        .hero-text {-->
+<!--            max-width: 300px;-->
+<!--            color: #1a3025;-->
+<!--            font-size: 1.25rem;-->
+<!--            line-height: 1.5;-->
+<!--            margin-bottom: 2rem;-->
+<!--        }-->
+
+        .mountains {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        /* RIGHT SIDE LOGIN PANEL */
+.right-side {
+    flex: 1;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
+    padding: 3rem 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    border: 1px solid #e5e7eb;
+}
+
+/* Titles */
+.login-box h2 {
+    font-size: 2.3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    color: #1f2937;
+}
+
+.login-box p {
+    color: #6b7280;
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+}
+
+/* OAUTH BUTTONS */
+.oauth-btn {
+    width: 100%;
+    padding: 0.9rem;
+    border-radius: 12px;
+    border: 2px solid #e5e7eb;
+    background: white;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: all 0.25s ease;
+}
+
+.oauth-btn img {
+    width: 22px;
+    height: 22px;
+}
+
+/* Hover Interaction */
+.oauth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 22px rgba(0, 0, 0, 0.12);
+    border-color: #d1d5db;
+    background: #fafafa;
+}
+
+/* Google Style */
+.google-btn:hover {
+    background: #f1f5f9;
+}
+
+/* GitHub Style */
+.github-btn {
+    color: #111827;
+}
+
+.github-btn:hover {
+    background: #f3f4f6;
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+    .right-side {
+        padding: 1.5rem;
+    }
+
+    .login-box {
+        padding: 2rem 1.75rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+<div class="split-container">
+    <div class="left-side">
+        <div class="logo">Food For All</div>
+        <div class="hero-text">
+<!--            Go from 0-90,<br>-->
+<!--            Your almost at prod!-->
+        </div>
+        <img class="mountains" th:src="@{/images/mountains.jpg}" alt="mountains"/>
+    </div>
+    <div class="right-side">
+        <div class="login-box">
+            <h2>Welcome Back</h2>
+            <p>Login with your preferred account</p>
+
+            <!-- Google Login -->
+            <a href="/oauth2/authorization/google" class="oauth-btn google-btn">
+                <img src="https://www.svgrepo.com/show/355037/google.svg" />
+                Login with Google
+            </a>
+
+            <!-- GitHub Login -->
+            <a href="/oauth2/authorization/github" class="oauth-btn github-btn">
+                <img src="https://www.svgrepo.com/show/475654/github-color.svg" />
+                Login with GitHub
+            </a>
+        </div>
+    </div>
+
+</div>
+<script>
+    function togglePassword() {
+        const eyeSlashed = document.getElementById('eye-slashed');
+        eyeSlashed.classList.toggle('hidden');
+        const eye = document.getElementById('eye');
+        eye.classList.toggle('hidden');
+
+        const passwordInput = document.getElementById('password');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    }
+</script>
+</body>
+</html>
